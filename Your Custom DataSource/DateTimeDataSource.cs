@@ -6,6 +6,7 @@ using ToSic.Eav.DataSources;
 
 namespace MyCompany.DataSources
 {
+    [PipelineDesigner]
     public class DateTimeDataSource: BaseDataSource
     {
         #region Configuration-properties
