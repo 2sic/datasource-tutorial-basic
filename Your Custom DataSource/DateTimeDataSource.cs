@@ -4,8 +4,17 @@ using System.Linq;
 using ToSic.Eav;
 using ToSic.Eav.DataSources;
 
+// Demo / Training Code to help you create our own DataSource
+// You can find the newest version here: https://github.com/2sic/eav-Custom-DataSource
+// there is also an App showing you how it would be used
+// and how such a data-source is configured. 
+// The app is important because it contains a content-type called "|Config MyCompany.DataSources.DateTimeDataSource" which is needed for configuration
+// The app can be found here: http://2sxc.org/en/Apps/Details?AppGuid=3bbc0160-a366-49db-99a0-0d50932e8fba
+// Also read the blog I wrote about this in http://www.dnnsoftware.com/community-blog
+
 namespace MyCompany.DataSources
 {
+    // Note that this attribute is necessary for the DataSource to show up in the 
     [PipelineDesigner]
     public class DateTimeDataSource: BaseDataSource
     {
