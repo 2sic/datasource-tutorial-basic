@@ -1,22 +1,21 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using MyCompany.DataSources;
 using ToSic.Eav.ValueProvider;
 
-namespace YourCompany.Testing.eav.DataSources
+namespace ToSic.Tutorial.Datasource.Tests
 {
     [TestClass]
-    public class DateTimeDataSourceTest
+    public class TestDateTime_Configurable
     {
         [TestMethod]
         public void TestStandardUseCase()
         {
             var yourDataSource = TestSource1();
             Assert.AreEqual(1, yourDataSource.Out.Count, "Should only find one out-stream");
-            Assert.AreEqual(1, yourDataSource.List.Count);
+            Assert.AreEqual(1, yourDataSource.List.Count());
 
-            var first = yourDataSource.List.FirstOrDefault().Value; 
+            var first = yourDataSource.List.FirstOrDefault(); 
             Assert.AreEqual("Date Today", first.GetBestValue("Title"));
             Assert.AreEqual("Date Today", first.GetBestValue("EntityTitle"));
             Assert.AreEqual("Saturday", first.GetBestValue("DayOfWeek"), "Expecting it to be Saturday - you'll have to update this test for your weekday.");
@@ -34,9 +33,9 @@ namespace YourCompany.Testing.eav.DataSources
             Assert.AreEqual("Date Today", ds.List);
         }
 
-        public DateTimeDataSource TestSource1()
+        public DateTimeDataSource_Configurable TestSource1()
         {
-            var testDS = ToSic.Eav.DataSource.GetDataSource<DateTimeDataSource>(1, 1, null, TestConfigProvider());
+            var testDS = ToSic.Eav.DataSource.GetDataSource<DateTimeDataSource_Configurable>(1, 1, null, TestConfigProvider());
             return testDS;
         }
 

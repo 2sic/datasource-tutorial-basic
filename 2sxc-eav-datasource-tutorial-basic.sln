@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 15
+VisualStudioVersion = 15.0.27004.2009
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2sxc-eav-datasource-tutorial-basic", "2sxc-eav-datasource-tutorial-basic\2sxc-eav-datasource-tutorial-basic.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2sxc-eav-datasource-tutorial-basic.Tests", "2sxc-eav-datasource-tutorial-basic.Tests\2sxc-eav-datasource-tutorial-basic.Tests.csproj", "{2257346B-74EA-4207-955E-BA53F1C90513}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7D61A32C-0F21-453F-A981-BD8E5A3A5304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2257346B-74EA-4207-955E-BA53F1C90513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2257346B-74EA-4207-955E-BA53F1C90513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2257346B-74EA-4207-955E-BA53F1C90513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2257346B-74EA-4207-955E-BA53F1C90513}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {604DBA20-3686-4C8A-9278-ED9D7FEBFF03}
+	EndGlobalSection
+EndGlobal

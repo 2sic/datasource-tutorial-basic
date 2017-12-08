@@ -1,0 +1,11 @@
+﻿<h3>ToSic-2sxc-eav-DataSource-Tutorial</h3>
+<p class="Contributor">
+	2sic.com <br />
+	<a href="mailto:info@2sxc.org">info@2sxc.org</a><br />
+	<a href=https://2sxc.org>https://2sxc.org</a><br />
+</p>
+<hr/>
+<div class="License">
+	This is a tutorial and not meant for production use. Please read the additional instructions on <a href="https://github.com/2sic/2sxc-eav-tutorial-custom-datasource" target="_blank">github</a>
+	
+</div>
