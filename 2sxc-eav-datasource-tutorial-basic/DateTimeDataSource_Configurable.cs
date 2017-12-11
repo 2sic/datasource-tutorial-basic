@@ -18,7 +18,6 @@ namespace ToSic.Tutorial.Datasource
     // Note that this attribute is necessary for the DataSource to show up in the 
     [VisualQuery(Type = DataSourceType.Source,
         DynamicOut = false,
-        EnableConfig = false,
         NiceName = "DateTime-Configurable",
         HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources")]
     public class DateTimeDataSource_Configurable: ExternalDataDataSource
