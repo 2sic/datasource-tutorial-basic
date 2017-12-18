@@ -57,6 +57,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="TestDateTime_BasicList.cs" />
     <Compile Include="TestDateTime_Basic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestDateTime_Advanced.cs" />

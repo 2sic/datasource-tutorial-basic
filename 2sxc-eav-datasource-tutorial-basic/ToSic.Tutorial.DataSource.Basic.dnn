@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="ToSic-2sxc-eav-DataSource-Tutorial" type="Module" version="00.00.01">
+    <package name="ToSic-2sxc-eav-DataSource-Tutorial" type="Module" version="01.00.00">
       <friendlyName>ToSic-2sxc-eav-DataSource-Tutorial</friendlyName>
       <description>2sic.com ToSic-2sxc-eav-DataSource-Tutorial module</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>

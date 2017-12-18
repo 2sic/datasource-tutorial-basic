@@ -16,10 +16,11 @@ using ToSic.Eav.Interfaces;
 namespace ToSic.Tutorial.Datasource
 {
     // Note that this attribute is necessary for the DataSource to show up in the 
-    [VisualQuery(Type = DataSourceType.Source,
-        DynamicOut = false,
-        NiceName = "DateTime-Configurable",
-        HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources")]
+    //[VisualQuery(
+    //    GlobalName = "e7c12cb9-ab3d-470c-8b24-48bf0a61c2a2",
+    //    Type = DataSourceType.Source,
+    //    NiceName = "DateTime-Configurable",
+    //    HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources")]
     public class DateTimeDataSource_Configurable: ExternalDataDataSource
     {
         #region Configuration-properties
@@ -85,10 +86,6 @@ namespace ToSic.Tutorial.Datasource
         /// <returns></returns>
 		private IEnumerable<IEntity> GetEntities()
         {
-            // try to use the cached result in case this had been accessed before
-            if (_cachedEntities != null)
-                return _cachedEntities;
-
             // This will resolve the tokens before starting
 			EnsureConfigurationIsLoaded();
 

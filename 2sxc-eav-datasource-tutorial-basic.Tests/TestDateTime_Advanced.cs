@@ -15,7 +15,7 @@ namespace ToSic.Tutorial.Datasource.Tests
             Assert.AreEqual(1, yourDataSource.Out.Count, "Should only find one out-stream");
             Assert.AreEqual(1, yourDataSource.List.Count());
 
-            var first = yourDataSource.List.FirstOrDefault(); 
+            var first = yourDataSource.List.First(); 
             Assert.AreEqual("Date Today", first.GetBestValue("Title"));
             Assert.AreEqual("Date Today", first.GetBestValue("EntityTitle"));
             Assert.AreEqual("Saturday", first.GetBestValue("DayOfWeek"), "Expecting it to be Saturday - you'll have to update this test for your weekday.");
@@ -33,12 +33,8 @@ namespace ToSic.Tutorial.Datasource.Tests
             Assert.AreEqual("Date Today", ds.List);
         }
 
-        public DateTimeDataSource_Configurable TestSource1()
-        {
-            var testDS = ToSic.Eav.DataSource.GetDataSource<DateTimeDataSource_Configurable>(1, 1, null, TestConfigProvider());
-            return testDS;
-        }
-
+        public DateTimeDataSource_Configurable TestSource1() 
+            => Eav.DataSource.GetDataSource<DateTimeDataSource_Configurable>(1, 1, null, TestConfigProvider());
 
 
         /// <summary>

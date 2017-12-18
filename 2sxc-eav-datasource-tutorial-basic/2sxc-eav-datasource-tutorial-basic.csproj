@@ -72,8 +72,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DateTimeDataSource_BasicList.cs" />
     <Compile Include="DateTimeDataSource_Configurable.cs" />
-    <Compile Include="DateTimeDataSourceBasic.cs" />
+    <Compile Include="DateTimeDataSource_Basic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -81,14 +82,14 @@
     <Content Include="ReleaseNotes.txt" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="_2sxc_eav_datasource_tutorial_basic.dnn" />
-  </ItemGroup>
-  <ItemGroup>
     <Content Include="BuildScripts\ModulePackage.targets" />
     <Content Include="BuildScripts\MSBuild.Community.Tasks.Targets" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ToSic.Tutorial.DataSource.Basic.dnn" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -106,7 +107,7 @@
           <DevelopmentServerPort>0</DevelopmentServerPort>
           <DevelopmentServerVPath>
           </DevelopmentServerVPath>
-          <IISUrl>http://2sxc-eav-datasource-tutorial-basic.dnndev.me/desktopmodules/_2sxc_eav_datasource_tutorial_basic</IISUrl>
+          <IISUrl>http://2sxc-eav-datasource-tutorial-basic.dnndev.me/desktopmodules/ToSic.Tutorial.DataSource.Basic</IISUrl>
           <OverrideIISAppRootUrl>True</OverrideIISAppRootUrl>
           <IISAppRootUrl>http://2sxc-eav-datasource-tutorial-basic.dnndev.me</IISAppRootUrl>
           <NTLMAuthentication>False</NTLMAuthentication>
@@ -120,8 +121,8 @@
   </ProjectExtensions>
   <PropertyGroup>
     <Extension>zip</Extension>
-    <DNNFileName>_2sxc_eav_datasource_tutorial_basic</DNNFileName>
-    <PackageName>_2sxc_eav_datasource_tutorial_basic</PackageName>
+    <DNNFileName>ToSic.Tutorial.DataSource.Basic</DNNFileName>
+    <PackageName>ToSic.Tutorial.DataSource.Basic</PackageName>
     <MSBuildCommunityTasksPath>$(SolutionDir)\BuildScripts</MSBuildCommunityTasksPath>
   </PropertyGroup>
   <Import Project="BuildScripts\ModulePackage.Targets" />
