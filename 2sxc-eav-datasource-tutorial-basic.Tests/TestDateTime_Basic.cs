@@ -2,6 +2,7 @@
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using ToSic.Tutorial.DataSource;
+using ToSic.Tutorial.DataSource.Basic;
 
 namespace ToSic.Tutorial.Datasource.Tests
 {

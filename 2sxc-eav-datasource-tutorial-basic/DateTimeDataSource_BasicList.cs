@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav;
+using ToSic.Eav.Data;
+using ToSic.Eav.Data.Builder;
 using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.VisualQuery;
-using ToSic.Eav.Interfaces;
+using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource
+namespace ToSic.Tutorial.DataSource.Basic
 {
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d",   // namespace or guid
-        NiceName = "DateTime-BasicList",
-        HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources-Custom"
+        NiceName = "Demo DateTime List",
+        GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // namespace or guid
     )]
-    public class DateTimeDataSourceBasicList: ExternalDataDataSource
+    public class DateTimeDataSourceBasicList: ExternalData
     {
         public const string DateFieldName = "Date";
         public const string IdField = "Id";
@@ -32,7 +34,7 @@ namespace ToSic.Tutorial.DataSource
         /// ...so this code will not execute unless it's really used
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<IEntity> GetList()
+        private ImmutableArray<IEntity> GetList()
         {
             var randomNumbers = new List<IEntity>();
 
@@ -43,10 +45,11 @@ namespace ToSic.Tutorial.DataSource
                     {IdField, i},
                     {DateFieldName, RandomDay()}
                 };
-                randomNumbers.Add(AsEntity(values, DateFieldName, id: i));
+                var ent = new Entity(Constants.TransientAppId, 1, ContentTypeBuilder.Fake("unspecified"), values, DateFieldName);
+                randomNumbers.Add(ent);
             }
 
-            return randomNumbers;
+            return randomNumbers.ToImmutableArray();
         }
 
         // helper to randomly generate dates

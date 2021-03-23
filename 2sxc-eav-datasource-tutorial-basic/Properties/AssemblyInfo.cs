@@ -4,12 +4,12 @@ using System.Runtime.InteropServices;
 // General Information about an assembly is controlled through the following 
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
-[assembly: AssemblyTitle("ToSic-2sxc-eav-DataSource-Tutorial")]
+[assembly: AssemblyTitle("ToSic.Tutorial.DataSource.Basic")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
 [assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("ToSic-2sxc-eav-DataSource-Tutorial")]
-[assembly: AssemblyCopyright("Copyright © 2017")]
+[assembly: AssemblyProduct("ToSic.Tutorial.DataSource.Basic")]
+[assembly: AssemblyCopyright("Copyright © 2021")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -30,5 +30,5 @@ using System.Runtime.InteropServices;
 //
 // You can specify all the values or you can default the Revision and Build Numbers 
 // by using the '*' as shown below:
-[assembly: AssemblyVersion("01.00.00.*")]
-[assembly: AssemblyFileVersion("01.00.00.*")]
+[assembly: AssemblyVersion("11.00.00")]
+[assembly: AssemblyFileVersion("11.00.00")]

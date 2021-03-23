@@ -1,7 +1,9 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToSic.Eav.ValueProvider;
+using ToSic.Eav.Apps;
+using ToSic.Eav.LookUp;
+using ToSic.Tutorial.DataSource.Basic;
 
 namespace ToSic.Tutorial.Datasource.Tests
 {
@@ -26,24 +28,31 @@ namespace ToSic.Tutorial.Datasource.Tests
         public void UseInvalidSetting_ExpectError()
         {
             var ds = TestSource1();
-            var settings = new Dictionary<string, string>();
-            settings.Add("DesiredDate", "Not today - should cause error");
-            var settingsValueProvider = new StaticValueProvider("Settings", settings);
-            ds.ConfigurationProvider.Sources.Add(settingsValueProvider.Name, settingsValueProvider);
+            var settings = new Dictionary<string, string>
+            {
+                {"DesiredDate", "Not today - should cause error"}
+            };
+            var settingsValueProvider = new LookUpInDictionary("Settings", settings);
+            ds.Configuration.LookUpEngine.Sources.Add(settingsValueProvider.Name, settingsValueProvider);
             Assert.AreEqual("Date Today", ds.List);
         }
 
-        public DateTimeDataSource_Configurable TestSource1() 
-            => Eav.DataSource.GetDataSource<DateTimeDataSource_Configurable>(1, 1, null, TestConfigProvider());
+        public DateTimeDataSource_Configurable TestSource1()
+        {
+#pragma warning disable 612
+            return new ToSic.Eav.DataSource()
+                .GetDataSource<DateTimeDataSource_Configurable>(new AppIdentity(1,1), null, TestConfigProvider());
+#pragma warning restore 612
+        }
 
 
         /// <summary>
         /// Create a test config provider - here you could supply tokens if you want to run tests which would resolve a token for you
         /// </summary>
         /// <returns></returns>
-        public IValueCollectionProvider TestConfigProvider()
+        public ILookUpEngine TestConfigProvider()
         {
-            var vc = new ValueCollectionProvider();
+            var vc = new LookUpEngine(null);
             // var entVc = new EntityValueProvider(AppSettings(), "AppSettings");
             // vc.Sources.Add("AppSettings".ToLower(), entVc);
             // vc.Sources.Add("AppResources".ToLower(), new EntityValueProvider(AppResources(), "AppResources"));

@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using ToSic.Eav;
+using ToSic.Eav.Data;
+using ToSic.Eav.Data.Builder;
 using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.VisualQuery;
-using ToSic.Eav.Interfaces;
+
 
 // Demo / Training Code to help you create our own DataSource
 // You can find the newest version here: https://github.com/2sic/eav-Custom-DataSource
@@ -13,7 +15,7 @@ using ToSic.Eav.Interfaces;
 // The app can be found here: http://2sxc.org/en/Apps/Details?AppGuid=3bbc0160-a366-49db-99a0-0d50932e8fba
 // Also read the blog I wrote about this in http://www.dnnsoftware.com/community-blog
 
-namespace ToSic.Tutorial.Datasource
+namespace ToSic.Tutorial.DataSource.Basic
 {
     // Note that this attribute is necessary for the DataSource to show up in the 
     //[VisualQuery(
@@ -21,7 +23,7 @@ namespace ToSic.Tutorial.Datasource
     //    Type = DataSourceType.Source,
     //    NiceName = "DateTime-Configurable",
     //    HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources")]
-    public class DateTimeDataSource_Configurable: ExternalDataDataSource
+    public class DateTimeDataSource_Configurable: ExternalData
     {
         #region Configuration-properties
 		private const string SomeDemoConfigurationKey = "DemoConfigNameInConfigList";
@@ -87,13 +89,14 @@ namespace ToSic.Tutorial.Datasource
 		private IEnumerable<IEntity> GetEntities()
         {
             // This will resolve the tokens before starting
-			EnsureConfigurationIsLoaded();
+            //EnsureConfigurationIsLoaded();
+            Configuration.Parse();
 
             // Here's your real code. 
             // Typically you will either perform some work with the In-streams
             // or retrieve data from another source like XML, RSS, SQL, File-storage etc.
             // Usually you would also need configuration from the UI - but sometimes not, especially if it's just for a very specific purpose
-			#region Your Custom Business Logic
+            #region Your Custom Business Logic
 
             _cachedEntities = new List<IEntity>();
 			try
@@ -113,7 +116,9 @@ namespace ToSic.Tutorial.Datasource
 			    };
 
 			    // ...now convert to an entity, and add to the list of results
-			    var ent = AsEntity(today, "Title", "DateTimeInfo");
+			    //var ent = AsEntity(today, "Title", "DateTimeInfo");
+                var ent = new Entity(Constants.TransientAppId, 0, ContentTypeBuilder.Fake("DateTimeInfo"), today, "Title");
+
                 _cachedEntities.Add(ent);
 			}
 			catch (Exception ex)

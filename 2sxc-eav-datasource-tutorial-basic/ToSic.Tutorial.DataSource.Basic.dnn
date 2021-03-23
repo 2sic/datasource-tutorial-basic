@@ -1,7 +1,7 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="ToSic-2sxc-eav-DataSource-Tutorial" type="Module" version="01.00.00">
-      <friendlyName>ToSic-2sxc-eav-DataSource-Tutorial</friendlyName>
+    <package name="ToSic-2sxc-eav-DataSource-Tutorial" type="Module" version="11.00.00">
+      <friendlyName>ToSic DataSource Tutorial Basic</friendlyName>
       <description>2sic.com ToSic-2sxc-eav-DataSource-Tutorial module</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>
       <owner>
@@ -36,7 +36,7 @@
         <component type="Assembly">
           <assemblies>
             <assembly>
-              <name>2sxc-eav-datasource-tutorial-basic.dll</name>
+              <name>ToSic.Tutorial.DataSource.Basic.dll</name>
               <path>bin</path>
             </assembly>
           </assemblies>

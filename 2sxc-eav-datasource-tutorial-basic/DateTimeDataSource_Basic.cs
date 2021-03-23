@@ -1,18 +1,20 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Immutable;
+using ToSic.Eav;
+using ToSic.Eav.Data;
+using ToSic.Eav.Data.Builder;
 using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.VisualQuery;
-using ToSic.Eav.Interfaces;
+using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource
+namespace ToSic.Tutorial.DataSource.Basic
 {
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = "DateTime-Basic",
-        GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e",   // namespace or guid
-        HelpLink = "https://github.com/2sic/2sxc/wiki/DotNet-DataSources-Custom"
+        NiceName = "Demo DateTime Basic",
+        GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"   // random & unique Guid
     )]
-    public class DateTimeDataSourceBasic: ExternalDataDataSource
+    public class DateTimeDataSourceBasic: ExternalData
     {
         public const string DateFieldName = "Date";
 
@@ -26,18 +28,17 @@ namespace ToSic.Tutorial.DataSource
 
         /// <summary>
         /// Get-List method, which will load/build the items once requested 
-        /// Note that the setup is lazy-loading,
-        /// ...so this code will not execute unless it's really used
+        /// Note that the setup is lazy-loading so this code will only execute when used
         /// </summary>
-        /// <returns></returns>
-        private IEnumerable<IEntity> GetList()
+        private ImmutableArray<IEntity> GetList()
         {
             var values = new Dictionary<string, object>
             {
                 {DateFieldName, DateTime.Now}
             };
-            var entity = AsEntity(values);
-            return new List<IEntity> {entity};
+            var entity = new Entity(Constants.TransientAppId, 0, ContentTypeBuilder.Fake("unknown"), values, DateFieldName);
+            
+            return new [] {(IEntity) entity}.ToImmutableArray();
         }
     }
 }

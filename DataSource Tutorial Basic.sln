@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.27004.2009
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.31005.135
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2sxc-eav-datasource-tutorial-basic", "2sxc-eav-datasource-tutorial-basic\2sxc-eav-datasource-tutorial-basic.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.DataSource.Tutorial.Basic", "2sxc-eav-datasource-tutorial-basic\ToSic.DataSource.Tutorial.Basic.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "2sxc-eav-datasource-tutorial-basic.Tests", "2sxc-eav-datasource-tutorial-basic.Tests\2sxc-eav-datasource-tutorial-basic.Tests.csproj", "{2257346B-74EA-4207-955E-BA53F1C90513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.DataSource.Tutorial.Basic.Tests", "2sxc-eav-datasource-tutorial-basic.Tests\ToSic.DataSource.Tutorial.Basic.Tests.csproj", "{2257346B-74EA-4207-955E-BA53F1C90513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
