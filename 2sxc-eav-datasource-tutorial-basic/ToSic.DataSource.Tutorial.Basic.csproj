@@ -68,9 +68,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DateTimeDataSource_BasicList.cs" />
-    <Compile Include="DateTimeDataSource_Configurable.cs" />
-    <Compile Include="DateTimeDataSource_Basic.cs" />
+    <Compile Include="BasicList.cs" />
+    <Compile Include="Configurable.cs" />
+    <Compile Include="Basic.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

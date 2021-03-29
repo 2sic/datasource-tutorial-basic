@@ -1,9 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using ToSic.Eav;
 using ToSic.Eav.Data;
-using ToSic.Eav.Data.Builder;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.DataSources.Queries;
 
@@ -45,7 +43,7 @@ namespace ToSic.Tutorial.DataSource.Basic
                     {IdField, i},
                     {DateFieldName, RandomDay()}
                 };
-                var ent = new Entity(Constants.TransientAppId, 1, ContentTypeBuilder.Fake("unspecified"), values, DateFieldName);
+                var ent = Build.Entity(values, id: i, titleField: DateFieldName);
                 randomNumbers.Add(ent);
             }
 

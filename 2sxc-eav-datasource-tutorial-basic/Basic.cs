@@ -1,15 +1,13 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Immutable;
-using ToSic.Eav;
 using ToSic.Eav.Data;
-using ToSic.Eav.Data.Builder;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.DataSources.Queries;
 
 namespace ToSic.Tutorial.DataSource.Basic
 {
-    // additional info so the visual query can provide the correct buttons and infos
+    // Additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
         NiceName = "Demo DateTime Basic",
         GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"   // random & unique Guid
@@ -23,7 +21,7 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// </summary>
         public DateTimeDataSourceBasic()
         {
-            Provide(GetList); // default out, if accessed, will deliver GetList
+            Provide(GetList); // "Default" out; when accessed, will deliver GetList
         }
 
         /// <summary>
@@ -32,13 +30,17 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// </summary>
         private ImmutableArray<IEntity> GetList()
         {
+            var date = DateTime.Now;
             var values = new Dictionary<string, object>
             {
-                {DateFieldName, DateTime.Now}
+                {DateFieldName, date},
+                {"Weekday", date.DayOfWeek},
+                {"DayOfWeek", (int) date.DayOfWeek}
             };
-            var entity = new Entity(Constants.TransientAppId, 0, ContentTypeBuilder.Fake("unknown"), values, DateFieldName);
             
-            return new [] {(IEntity) entity}.ToImmutableArray();
+            // Construct the IEntity and return as ImmutableArray
+            var entity = Build.Entity(values, titleField: DateFieldName);
+            return new [] {entity}.ToImmutableArray();
         }
     }
 }
