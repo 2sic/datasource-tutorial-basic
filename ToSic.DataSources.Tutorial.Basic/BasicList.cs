@@ -10,7 +10,7 @@ namespace ToSic.Tutorial.DataSource.Basic
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
         NiceName = "Demo DateTime List",
-        GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // namespace or guid
+        GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // random & unique Guid
     )]
     public class DateTimeDataSourceBasicList: ExternalData
     {

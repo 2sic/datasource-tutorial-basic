@@ -1,8 +1,8 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="ToSic-2sxc-eav-DataSource-Tutorial" type="Module" version="11.00.00">
+    <package name="ToSic.DataSource.Tutorial.Basic" type="Library" version="11.00.00">
       <friendlyName>ToSic DataSource Tutorial Basic</friendlyName>
-      <description>2sic.com ToSic-2sxc-eav-DataSource-Tutorial module</description>
+      <description>2sic.com DataSource Tutorial Basic DataSources</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>
       <owner>
         <name>2sic.com</name>
@@ -20,13 +20,13 @@
       <components>
         <component type="Script">
           <scripts>
-            <basePath>DesktopModules\ToSic-2sxc-eav-DataSource-Tutorial</basePath>
+            <basePath>DesktopModules\ToSic.DataSource.Tutorial.Basic</basePath>
           </scripts>
         </component>
 
         <component type="ResourceFile">
           <resourceFiles>
-            <basePath>DesktopModules/ToSic-2sxc-eav-DataSource-Tutorial</basePath>
+            <basePath>DesktopModules\ToSic.DataSource.Tutorial.Basic</basePath>
             <resourceFile>
               <name>Resources.zip</name>
             </resourceFile>

@@ -63,8 +63,8 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\2sxc-eav-datasource-tutorial-basic\ToSic.DataSource.Tutorial.Basic.csproj">
-      <Project>{7D61A32C-0F21-453F-A981-BD8E5A3A5304}</Project>
+    <ProjectReference Include="..\ToSic.DataSources.Tutorial.Basic\ToSic.DataSource.Tutorial.Basic.csproj">
+      <Project>{7d61a32c-0f21-453f-a981-bd8e5a3a5304}</Project>
       <Name>ToSic.DataSource.Tutorial.Basic</Name>
     </ProjectReference>
   </ItemGroup>
