@@ -2,6 +2,12 @@
 
 Demo / tutorial code to get started with your own custom data source.
 
+## Full Documentation
+
+This below is just an extract. You can find the full infos / docs here:
+
+https://docs.2sxc.org/net-code/data-sources/custom/tutorial-basic/index.html
+
 ## What's inside
 
 1. A Visual Studio 2019 solution for 2sxc/EAV 11.13+ 
