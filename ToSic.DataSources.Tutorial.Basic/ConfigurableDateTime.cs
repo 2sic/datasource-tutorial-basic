@@ -40,9 +40,7 @@ namespace ToSic.Tutorial.DataSource.Basic
 		}
 
         /// <summary>
-        /// A number-demo config. Note that we don't do error-checking, because if it's actually not a number, a error should really be raised. 
-        /// You'll see later that we're actually starting with a token, but we're already adding a fallback number so after token resolving
-        /// it should always be a number
+        /// A number-demo config. Note that we do error-checking and store it with SetError
         /// </summary>
         public int Hours
         {
