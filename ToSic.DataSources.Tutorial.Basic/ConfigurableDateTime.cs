@@ -15,9 +15,10 @@ namespace ToSic.Tutorial.DataSource.Basic
 {
     // Note that this attribute is necessary for the DataSource to show up in the 
     [VisualQuery(
+        NiceName = "Tutorial DateTime Configurable",
+        Icon = "event",
         GlobalName = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
         Type = DataSourceType.Source,
-        NiceName = "DateTime Configurable",
         // Guid of the Content-Type which must be exported with this DataSource
         // It's located in .data/contenttypes
         // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it

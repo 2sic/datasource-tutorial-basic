@@ -9,14 +9,15 @@ namespace ToSic.Tutorial.DataSource.Basic
 {
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = "Demo DateTime List",
+        NiceName = "Tutorial DateTime List",
+        Icon = "date_range",
         GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // random & unique Guid
     )]
     public class DateTimeDataSourceBasicList: ExternalData
     {
         public const string DateFieldName = "Date";
         public const string IdField = "Id";
-        public const int ItemsToGenerate = 7;
+        public const int ItemsToGenerate = 27;
 
         /// <summary>
         /// Constructor to tell the system what out-streams we have

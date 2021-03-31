@@ -9,7 +9,8 @@ namespace ToSic.Tutorial.DataSource.Basic
 {
     // Additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = "Demo DateTime Basic",
+        NiceName = "Tutorial DateTime Basic",
+        Icon = "today",
         GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"   // random & unique Guid
     )]
     public class DateTimeDataSourceBasic: ExternalData
