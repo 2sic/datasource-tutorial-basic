@@ -40,7 +40,7 @@ namespace ToSic.Tutorial.DataSource.Basic
             };
             
             // Construct the IEntity and return as ImmutableArray
-            var entity = Build.Entity(values, titleField: DateFieldName);
+            var entity = DataBuilder.Entity(values, titleField: DateFieldName);
             return new [] {entity}.ToImmutableArray();
         }
     }

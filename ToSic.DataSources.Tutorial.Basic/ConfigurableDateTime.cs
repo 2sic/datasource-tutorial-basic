@@ -133,7 +133,7 @@ namespace ToSic.Tutorial.DataSource.Basic
                 };
 
                 // ...now convert to an entity with the data prepared before
-                var ent = Build.Entity(today, titleField: "Title");
+                var ent = DataBuilder.Entity(today, titleField: "Title");
                 return new List<IEntity> { ent }.ToImmutableArray();
             }
             catch (Exception ex)

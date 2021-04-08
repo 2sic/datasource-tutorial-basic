@@ -44,7 +44,7 @@ namespace ToSic.Tutorial.DataSource.Basic
                     {IdField, i},
                     {DateFieldName, RandomDay()}
                 };
-                var ent = Build.Entity(values, id: i, titleField: DateFieldName);
+                var ent = DataBuilder.Entity(values, id: i, titleField: DateFieldName);
                 randomNumbers.Add(ent);
             }
 
