@@ -33,7 +33,7 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// ...so this code will not execute unless it's really used
         /// </summary>
         /// <returns></returns>
-        private IEnumerable<IEntity> GetList()
+        private IImmutableList<IEntity> GetList()
         {
             var randomNumbers = new List<IEntity>();
 
