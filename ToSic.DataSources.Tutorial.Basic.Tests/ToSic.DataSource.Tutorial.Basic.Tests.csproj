@@ -9,7 +9,7 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>ToSic.Tutorial.Datasource.Tests</RootNamespace>
     <AssemblyName>2sxc-eav-datasource-tutorial-basic.Tests</AssemblyName>
-    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">15.0</VisualStudioVersion>
@@ -19,6 +19,7 @@
     <TestProjectType>UnitTest</TestProjectType>
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -46,11 +47,17 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="ToSic.Eav">
+      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.dll</HintPath>
+    </Reference>
+    <Reference Include="ToSic.Eav.Apps">
+      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Apps.dll</HintPath>
+    </Reference>
     <Reference Include="ToSic.Eav.Core">
-      <HintPath>..\..\..\2sxc-dnn742\Website\bin\ToSic.Eav.Core.dll</HintPath>
+      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Core.dll</HintPath>
     </Reference>
     <Reference Include="ToSic.Eav.DataSources">
-      <HintPath>..\..\..\2sxc-dnn742\Website\bin\ToSic.Eav.DataSources.dll</HintPath>
+      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.DataSources.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -60,6 +67,7 @@
     <Compile Include="TestDateTime_Advanced.cs" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="app.config" />
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
