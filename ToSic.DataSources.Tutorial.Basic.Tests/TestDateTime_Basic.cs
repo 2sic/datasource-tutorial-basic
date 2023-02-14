@@ -11,7 +11,7 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasOneItem()
         {
-            var dtmDs = new DateTimeDataSourceBasic();
+            var dtmDs = new TutorialDataSourceToday();
             Assert.AreEqual(1, dtmDs.List.Count(), "make sure it has 1 and only 1 item in the list");
 
             var item = dtmDs.List.First();
@@ -21,7 +21,7 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasOneAttribute()
         {
-            var dtmDs = new DateTimeDataSourceBasic();
+            var dtmDs = new TutorialDataSourceToday();
             var item = dtmDs.List.First();
             Assert.AreEqual(3, item.Attributes.Count, "has only 1 property");
         }
@@ -30,9 +30,9 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasDateFieldWhichIsDate()
         {
-            var dtmDs = new DateTimeDataSourceBasic();
+            var dtmDs = new TutorialDataSourceToday();
             var item = dtmDs.List.First();
-            var dateAsObject = item.GetBestValue(DateTimeDataSourceBasic.DateFieldName);
+            var dateAsObject = item.GetBestValue(TutorialDataSourceToday.DateFieldName);
             Assert.IsNotNull(dateAsObject);
 
             var dateAsDate = dateAsObject as DateTime?;

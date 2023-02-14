@@ -74,23 +74,23 @@
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.Xml.Linq" />
-    <Reference Include="ToSic.Eav">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.dll</HintPath>
+    <Reference Include="ToSic.Eav.Core, Version=11.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ToSic.Eav.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ToSic.Eav.Apps">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Apps.dll</HintPath>
+    <Reference Include="ToSic.Eav.DataSources, Version=11.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ToSic.Eav.DataSources.dll</HintPath>
     </Reference>
-    <Reference Include="ToSic.Eav.Core">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Core.dll</HintPath>
-    </Reference>
-    <Reference Include="ToSic.Eav.DataSources">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.DataSources.dll</HintPath>
+    <Reference Include="ToSic.Lib.Core">
+      <HintPath>..\Dependencies\ToSic.Lib.Core.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BasicList.cs" />
+    <Compile Include="Multiple Streams and Logging\MultipleLists.cs" />
+    <Compile Include="Basic list\TutorialDataSourceRandomDates.cs" />
     <Compile Include="ConfigurableDateTime.cs" />
-    <Compile Include="Basic.cs" />
+    <Compile Include="Basic %28single item%29\TutorialDataSourceToday.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterGlobalContentType.cs" />
   </ItemGroup>
@@ -120,6 +120,7 @@
   <ItemGroup>
     <Content Include=".data\contenttypes\2SexyContent.677210a2-cf08-46e5-a6b2-86e56e27be99.json" />
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>

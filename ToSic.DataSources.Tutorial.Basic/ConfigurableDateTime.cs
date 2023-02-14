@@ -26,68 +26,66 @@ namespace ToSic.Tutorial.DataSource.Basic
         HelpLink = "https://r.2sxc.org/DsCustom")]
     public class ConfigurableDateTime : ExternalData
     {
+
         #region Configuration-properties
-        private const string DesiredDateKey = "DesiredDate";
-        private const string HoursKey = "Hours";
+
+        private const string DateTodayPlaceholder = "Today";
 
         /// <summary>
         /// A piece of demo-configuration. It must always be stored/accessed from the Configuration dictionary
         /// because everything in the config-dictionary will be token-resolved
         /// </summary>
+        [Configuration(Fallback = DateTodayPlaceholder)]
         public string DesiredDate
         {
-            get => Configuration[DesiredDateKey];
-            set => Configuration[DesiredDateKey] = value;
+            // Get the value from configuration - will automatically use the name of this property
+            get => Configuration.GetThis();
+            // Set the value in the configuration - will automatically use the name of this property
+            set => Configuration.SetThis(value);
         }
 
         /// <summary>
         /// A number-demo config. Note that we do error-checking and store it with SetError
         /// </summary>
+        [Configuration(Fallback = 17)]  // This says it will default to '17' unless overriden by config data
         public int Hours
         {
             get
             {
-                if (decimal.TryParse(Configuration[HoursKey], out var hour))
-                {
-                    // check that it's a valid hour-range
-                    if (hour >= 0 && hour <= 23) return (int)hour;
+                // Get the stored value, and if anything fails, return -1
+                var hour = Configuration.GetThis(-1);
 
-                    // If not, set the error, so that the code can later pick up the error-stream
-                    SetError("Hour value out of range", $"The hour was '{hour}' which is not valid");
-                    return 0;
-                }
+                // If it's a valid hour-range, return it
+                if (hour >= 0 && hour <= 23) 
+                    return hour;
 
-                // Apparently not a decimal, so set the error, so that the code can later pick up the error-stream
-                SetError("Hour value invalid", $"Tried to parse the hour, but couldn't. Value was '{Configuration[HoursKey]}'");
+                // If not, set the error, so that the code can later pick up the error-stream
+                SetError("Hour value out of range", $"The hour was '{hour}' which is not valid");
                 return 0;
             }
-            set => Configuration[HoursKey] = value.ToString();
+            // Set the value in the configuration - will use the name of this property and convert to string
+            set => Configuration.SetThis(value);
         }
 
         #endregion
 
+        private readonly IDataBuilder _builder;
+
         /// <summary>
         /// Constructs a new EntityIdFilter
         /// </summary>
-        public ConfigurableDateTime()
+        public ConfigurableDateTime(Dependencies baseDependencies, IDataBuilder builder): base(baseDependencies, "My.Config")
         {
+            // Make sure the services retrieved are connected for insights-logging
+            ConnectServices(
+                // Configure the builder to later create this type of data
+                _builder = builder.Configure(typeName: "CustomDay", titleField: "Title")
+            );
+
             // The out-list contains all out-streams.
             // For performance reasons we want to make sure that they are NOT created unless accessed
             // Because of this, we create a data-stream with a deferred call to GetEntities - like this:
             Provide(GetEntities);
-
-            // Example of pre-configuring a text
-            // This will place the token to be resolved into the variable
-            // The tokens will be resolved before use
-            // The following token means: 
-            // - Try to use the configured value from the setting on this data-source in the visual query
-            // - if there is none, just use the value "Today"
-            ConfigMask(DesiredDateKey, "[Settings:DesiredDate||Today]");
-
-            // Example of pre-configuring a number value
-            // We can't just say AnotherDemoConfig = "text" because that would not compile since it expects a number
-            // So we just add the token to be resolved directly to the configuration list
-            ConfigMask(HoursKey, "[Settings:Hours||17]");
         }
 
 
@@ -100,7 +98,7 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// <returns></returns>
 		private IImmutableList<IEntity> GetEntities()
         {
-            // This will resolve the tokens before starting
+            // This will resolve the tokens of the Configuration before starting
             Configuration.Parse();
 
             // Here's your real code. 
@@ -112,7 +110,8 @@ namespace ToSic.Tutorial.DataSource.Basic
             try
             {
                 // Check if we're trying to inform about today
-                if (DesiredDate != "Today")
+                // if it fails, generate a result stream with error message inside
+                if (DesiredDate != DateTodayPlaceholder)
                     return SetError("Demo Config not Today", "The Demo Configuration should be 'Today' or empty.");
 
                 // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
@@ -126,14 +125,14 @@ namespace ToSic.Tutorial.DataSource.Basic
                 // In this demo we'll just create 1 entity containing some values related to today
                 var today = new Dictionary<string, object>
                 {
-                    {"Title", "Date Today"},
-                    {"Date", todayDate.AddHours(hours)},
-                    {"DayOfWeek", DateTime.Today.DayOfWeek.ToString()},
-                    {"DayOfWeekNumber", DateTime.Today.DayOfWeek}
+                    { "Title", "Date Today" },
+                    { "Date", todayDate.AddHours(hours) },
+                    { "DayOfWeek", DateTime.Today.DayOfWeek.ToString() },
+                    { "DayOfWeekNumber", DateTime.Today.DayOfWeek }
                 };
 
                 // ...now convert to an entity with the data prepared before
-                var ent = DataBuilder.Entity(today, titleField: "Title");
+                var ent = _builder.Create(today);
                 return new List<IEntity> { ent }.ToImmutableArray();
             }
             catch (Exception ex)

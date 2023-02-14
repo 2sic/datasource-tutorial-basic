@@ -11,8 +11,8 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasManyItems()
         {
-            var dtmDs = new DateTimeDataSourceBasicList();
-            Assert.AreEqual(DateTimeDataSourceBasicList.ItemsToGenerate, dtmDs.List.Count(), $"make sure it has exactly {DateTimeDataSourceBasicList.ItemsToGenerate} item in the list");
+            var dtmDs = new TutorialDataSourceRandomDates();
+            Assert.AreEqual(TutorialDataSourceRandomDates.ItemsToGenerate, dtmDs.List.Count(), $"make sure it has exactly {TutorialDataSourceRandomDates.ItemsToGenerate} item in the list");
 
             var item = dtmDs.List.First();
             Assert.IsNotNull(item, "the item must be a real object");
@@ -21,7 +21,7 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasTwoAttributes()
         {
-            var dtmDs = new DateTimeDataSourceBasicList();
+            var dtmDs = new TutorialDataSourceRandomDates();
             var item = dtmDs.List.First();
             Assert.AreEqual(2, item.Attributes.Count, "has only 2 property");
         }
@@ -30,9 +30,9 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasDateFieldWhichIsDate()
         {
-            var dtmDs = new DateTimeDataSourceBasicList();
+            var dtmDs = new TutorialDataSourceRandomDates();
             var item = dtmDs.List.First();
-            var dateAsObject = item.GetBestValue(DateTimeDataSourceBasicList.DateFieldName);
+            var dateAsObject = item.GetBestValue(TutorialDataSourceRandomDates.DateFieldName);
             Assert.IsNotNull(dateAsObject);
 
             var dateAsDate = dateAsObject as DateTime?;
