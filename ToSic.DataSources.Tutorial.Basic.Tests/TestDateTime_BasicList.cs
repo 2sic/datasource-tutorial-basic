@@ -6,7 +6,7 @@ using ToSic.Testing.Shared;
 namespace ToSic.Tutorial.DataSources.Tests
 {
     [TestClass]
-    public class TestDateTime_BasicList: TestBaseEavDataSources
+    public class TestDateTime_BasicList: TestBaseEavDataSource
     {
         [TestMethod]
         public void DateTimeDataSource_HasManyItems()

@@ -9,7 +9,7 @@ namespace ToSic.Tutorial.DataSources.Tests
     // Tests disabled for now, because they would require Dependency Injection configured
     // which is quite complex for such a simple demo.
     [TestClass]
-    public class TestDateTime_Configurable: TestBaseEavDataSources
+    public class TestDateTime_Configurable: TestBaseEavDataSource
     {
         [TestMethod]
         public void TestStandardUseCase()
