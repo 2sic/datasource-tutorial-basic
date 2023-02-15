@@ -1,17 +1,17 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToSic.Tutorial.DataSource.Basic;
+using ToSic.Testing.Shared;
 
-namespace ToSic.Tutorial.Datasource.Tests
+namespace ToSic.Tutorial.DataSources.Tests
 {
     [TestClass]
-    public class TestDateTime_Basic
+    public class TestDateTime_Basic: TestBaseEavDataSources
     {
         [TestMethod]
         public void DateTimeDataSource_HasOneItem()
         {
-            var dtmDs = new TutorialDataSourceToday();
+            var dtmDs = CreateDataSource<TodayInfos>();
             Assert.AreEqual(1, dtmDs.List.Count(), "make sure it has 1 and only 1 item in the list");
 
             var item = dtmDs.List.First();
@@ -21,7 +21,7 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasOneAttribute()
         {
-            var dtmDs = new TutorialDataSourceToday();
+            var dtmDs = CreateDataSource<TodayInfos>();
             var item = dtmDs.List.First();
             Assert.AreEqual(3, item.Attributes.Count, "has only 1 property");
         }
@@ -30,14 +30,13 @@ namespace ToSic.Tutorial.Datasource.Tests
         [TestMethod]
         public void DateTimeDataSource_HasDateFieldWhichIsDate()
         {
-            var dtmDs = new TutorialDataSourceToday();
+            var dtmDs = CreateDataSource<TodayInfos>();
             var item = dtmDs.List.First();
-            var dateAsObject = item.GetBestValue(TutorialDataSourceToday.DateFieldName);
-            Assert.IsNotNull(dateAsObject);
+            var dateAsString = item.GetBestValue(TodayInfos.DateFieldName);
+            Assert.IsNotNull(dateAsString);
 
-            var dateAsDate = dateAsObject as DateTime?;
+            var dateAsDate = item.GetBestValue<DateTime>(TodayInfos.DateFieldName);
             Assert.IsNotNull(dateAsDate);
-
         }
     }
 }

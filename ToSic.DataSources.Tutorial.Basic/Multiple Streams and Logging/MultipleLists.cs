@@ -7,7 +7,7 @@ using ToSic.Eav.DataSources;
 using ToSic.Eav.DataSources.Queries;
 using ToSic.Lib.Logging;
 
-namespace ToSic.Tutorial.DataSource.Basic
+namespace ToSic.Tutorial.DataSources
 {
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(

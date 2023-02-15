@@ -1,30 +1,30 @@
-﻿using System.Linq;
+﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using ToSic.Eav.Apps;
 using ToSic.Eav.LookUp;
-using ToSic.Tutorial.DataSource.Basic;
+using ToSic.Testing.Shared;
 
-namespace ToSic.Tutorial.Datasource.Tests
+namespace ToSic.Tutorial.DataSources.Tests
 {
     // Tests disabled for now, because they would require Dependency Injection configured
     // which is quite complex for such a simple demo.
     [TestClass]
-    public class TestDateTime_Configurable
+    public class TestDateTime_Configurable: TestBaseEavDataSources
     {
         [TestMethod]
         public void TestStandardUseCase()
         {
             // Tests disabled for now, because they would require Dependency Injection configured
             // which is quite complex for such a simple demo.
-            return; 
-            var yourDataSource = TestSource1();
+            var yourDataSource = CreateDataSource<ConfigurableDateTime>(TestConfigProvider());
             Assert.AreEqual(1, yourDataSource.Out.Count, "Should only find one out-stream");
             Assert.AreEqual(1, yourDataSource.List.Count());
 
             var first = yourDataSource.List.First(); 
-            Assert.AreEqual("Date Today", first.GetBestValue("Title"));
-            Assert.AreEqual("Date Today", first.GetBestValue("EntityTitle"));
-            Assert.AreEqual("Saturday", first.GetBestValue("DayOfWeek"), "Expecting it to be Saturday - you'll have to update this test for your weekday.");
+            Assert.AreEqual("Date Today", first.GetBestValue<string>("Title"));
+            Assert.AreEqual("Date Today", first.GetBestValue<string>("EntityTitle"));
+            var todaysWeekDay = DateTime.Now.DayOfWeek.ToString();
+            Assert.AreEqual(todaysWeekDay, first.GetBestValue("DayOfWeek"), "Expecting it to be todays weekday - you'll have to update this test for your weekday.");
         }
 
         // Tests disabled for now, because they would require Dependency Injection configured
@@ -41,13 +41,6 @@ namespace ToSic.Tutorial.Datasource.Tests
         //    ds.Configuration.LookUpEngine.Sources.Add(settingsValueProvider.Name, settingsValueProvider);
         //    Assert.AreEqual("Date Today", ds.List);
         //}
-
-        public ConfigurableDateTime TestSource1()
-        {
-            return new ToSic.Eav.DataSource()
-                .GetDataSource<ConfigurableDateTime>(new AppIdentity(1,1), null, TestConfigProvider());
-        }
-
 
         /// <summary>
         /// Create a test config provider - here you could supply tokens if you want to run tests which would resolve a token for you

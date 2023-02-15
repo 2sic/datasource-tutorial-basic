@@ -1,11 +1,11 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.31005.135
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33122.133
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.DataSource.Tutorial.Basic", "ToSic.DataSources.Tutorial.Basic\ToSic.DataSource.Tutorial.Basic.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.Tutorial.DataSources", "ToSic.DataSources.Tutorial.Basic\ToSic.Tutorial.DataSources.csproj", "{7D61A32C-0F21-453F-A981-BD8E5A3A5304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.DataSource.Tutorial.Basic.Tests", "ToSic.DataSources.Tutorial.Basic.Tests\ToSic.DataSource.Tutorial.Basic.Tests.csproj", "{2257346B-74EA-4207-955E-BA53F1C90513}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ToSic.Tutorial.DataSources.Tests", "ToSic.DataSources.Tutorial.Basic.Tests\ToSic.Tutorial.DataSources.Tests.csproj", "{2257346B-74EA-4207-955E-BA53F1C90513}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

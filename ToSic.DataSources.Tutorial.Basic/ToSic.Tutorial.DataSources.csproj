@@ -11,7 +11,7 @@
     <ProjectTypeGuids>{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToSic.Tutorial.DataSource.Basic</RootNamespace>
+    <RootNamespace>ToSic.Tutorial.DataSources</RootNamespace>
     <AssemblyName>ToSic.Tutorial.DataSource.Basic</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <UseIISExpress>true</UseIISExpress>
@@ -65,15 +65,11 @@
       <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.6.0.0\lib\net461\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
     </Reference>
     <Reference Include="System.Web" />
-    <Reference Include="System.Web.Extensions" />
     <Reference Include="System.Xml" />
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
-    <Reference Include="System.Web.DynamicData" />
-    <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
-    <Reference Include="System.Xml.Linq" />
     <Reference Include="ToSic.Eav.Core, Version=11.13.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\Dependencies\ToSic.Eav.Core.dll</HintPath>
@@ -88,9 +84,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Multiple Streams and Logging\MultipleLists.cs" />
-    <Compile Include="Basic list\TutorialDataSourceRandomDates.cs" />
-    <Compile Include="ConfigurableDateTime.cs" />
-    <Compile Include="Basic %28single item%29\TutorialDataSourceToday.cs" />
+    <Compile Include="No 02 Basic list\RandomDates.cs" />
+    <Compile Include="No 10 Configurable\ConfigurableDateTime.cs" />
+    <Compile Include="No 01 Basic, single item\TodayInfos.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="RegisterGlobalContentType.cs" />
   </ItemGroup>

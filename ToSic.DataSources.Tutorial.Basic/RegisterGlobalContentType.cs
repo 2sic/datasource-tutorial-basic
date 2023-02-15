@@ -2,7 +2,7 @@
 using System.Web;
 using ToSic.Eav.Repositories;
 
-namespace ToSic.Tutorial.DataSource.Basic
+namespace ToSic.Tutorial.DataSources
 {
     /// <summary>
     /// This class will be picked up by 2sxc/EAV at boot.

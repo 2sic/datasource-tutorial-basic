@@ -7,7 +7,7 @@
     <ProjectGuid>{2257346B-74EA-4207-955E-BA53F1C90513}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>ToSic.Tutorial.Datasource.Tests</RootNamespace>
+    <RootNamespace>ToSic.Tutorial.DataSources.Tests</RootNamespace>
     <AssemblyName>2sxc-eav-datasource-tutorial-basic.Tests</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
@@ -39,6 +39,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.Extensions.DependencyInjection, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.2.1.1\lib\net461\Microsoft.Extensions.DependencyInjection.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Extensions.DependencyInjection.Abstractions, Version=2.1.1.0, Culture=neutral, PublicKeyToken=adb9793829ddae60, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Extensions.DependencyInjection.Abstractions.2.1.1\lib\netstandard2.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.VisualStudio.TestPlatform.TestFramework, Version=14.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
       <HintPath>..\packages\MSTest.TestFramework.2.2.3\lib\net45\Microsoft.VisualStudio.TestPlatform.TestFramework.dll</HintPath>
     </Reference>
@@ -47,17 +53,19 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
-    <Reference Include="ToSic.Eav">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.dll</HintPath>
+    <Reference Include="ToSic.Eav.Core, Version=11.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ToSic.Eav.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ToSic.Eav.Apps">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Apps.dll</HintPath>
+    <Reference Include="ToSic.Eav.DataSources, Version=11.13.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\Dependencies\ToSic.Eav.DataSources.dll</HintPath>
     </Reference>
-    <Reference Include="ToSic.Eav.Core">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.Core.dll</HintPath>
+    <Reference Include="ToSic.Lib.Core">
+      <HintPath>..\Dependencies\ToSic.Lib.Core.dll</HintPath>
     </Reference>
-    <Reference Include="ToSic.Eav.DataSources">
-      <HintPath>..\..\..\Testing\DNN-Custome-Datasource\Website\bin\ToSic.Eav.DataSources.dll</HintPath>
+    <Reference Include="ToSic.Testing.Shared">
+      <HintPath>..\Dependencies\ToSic.Testing.Shared.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -71,9 +79,9 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\ToSic.DataSources.Tutorial.Basic\ToSic.DataSource.Tutorial.Basic.csproj">
+    <ProjectReference Include="..\ToSic.DataSources.Tutorial.Basic\ToSic.Tutorial.DataSources.csproj">
       <Project>{7d61a32c-0f21-453f-a981-bd8e5a3a5304}</Project>
-      <Name>ToSic.DataSource.Tutorial.Basic</Name>
+      <Name>ToSic.Tutorial.DataSources</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets" Condition="Exists('$(VSToolsPath)\TeamTest\Microsoft.TestTools.targets')" />

@@ -6,15 +6,15 @@ using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource.Basic
+namespace ToSic.Tutorial.DataSources
 {
     // additional info so the visual query can provide the correct buttons and infos
     [VisualQuery(
-        NiceName = "Tutorial Random Dates List",
+        NiceName = "Random Dates (Tutorial)",
         Icon = "date_range",
         GlobalName = "10ebb0af-4b4e-44cb-81e3-68c3b0bb388d"   // random & unique Guid
     )]
-    public class TutorialDataSourceRandomDates: ExternalData
+    public class RandomDates: ExternalData
     {
         #region Constants
 
@@ -31,7 +31,7 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// <summary>
         /// Constructor to tell the system what out-streams we have
         /// </summary>
-        public TutorialDataSourceRandomDates(Dependencies dependencies, IDataBuilder builder): base(dependencies, "My.BsList")
+        public RandomDates(Dependencies dependencies, IDataBuilder builder): base(dependencies, "My.BsList")
         {
             // Make sure the services retrieved are connected for insights-logging
             ConnectServices(

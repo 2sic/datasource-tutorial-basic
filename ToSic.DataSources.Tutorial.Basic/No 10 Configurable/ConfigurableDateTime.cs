@@ -11,7 +11,7 @@ using ToSic.Eav.DataSources.Queries;
 // there is also an App showing you how it would be used
 // and how such a data-source is configured. 
 
-namespace ToSic.Tutorial.DataSource.Basic
+namespace ToSic.Tutorial.DataSources
 {
     // Note that this attribute is necessary for the DataSource to show up in the 
     [VisualQuery(

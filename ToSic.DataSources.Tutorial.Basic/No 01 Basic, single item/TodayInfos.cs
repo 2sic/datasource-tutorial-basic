@@ -5,19 +5,20 @@ using ToSic.Eav.Data;
 using ToSic.Eav.DataSources;
 using ToSic.Eav.DataSources.Queries;
 
-namespace ToSic.Tutorial.DataSource.Basic
+namespace ToSic.Tutorial.DataSources
 {
-    // Additional info so the visual query can provide the correct buttons and infos
+    // This `[VisualQuery]` Attribute provides info so the visual query can provide the correct buttons and infos
+    // There are ca. 20 possible settings
     [VisualQuery(
         // The nice title to show in Visual Query
-        NiceName = "Tutorial DateTime Basic",
+        NiceName = "TodayInfos (Tutorial)",
         // The name of the icon - from the google fonts
         Icon = "today",
         // A very unique ID - make sure you get a fresh one for each data source
         // for example from https://guidgenerator.com/
         GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"
     )]
-    public class TutorialDataSourceToday: ExternalData
+    public class TodayInfos: ExternalData
     {
         #region Constants
 
@@ -37,7 +38,7 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// </summary>
         /// <param name="baseDependencies">The dependencies required by the base class</param>
         /// <param name="builder">The builder which we'll need to create our own data</param>
-        public TutorialDataSourceToday(Dependencies baseDependencies, IDataBuilder builder): base(baseDependencies, "My.Basic")
+        public TodayInfos(Dependencies baseDependencies, IDataBuilder builder): base(baseDependencies, "My.Basic")
         {
             // Make sure the services retrieved are connected for insights-logging
             ConnectServices(
@@ -57,6 +58,8 @@ namespace ToSic.Tutorial.DataSource.Basic
         /// </summary>
         private IImmutableList<IEntity> GetListWithToday()
         {
+            // These are the values which the Entity will have
+            // It uses standard Name / Value pairs in a dictionary
             var values = new Dictionary<string, object>
             {
                 { DateFieldName, DateTime.Now.ToShortDateString() },
