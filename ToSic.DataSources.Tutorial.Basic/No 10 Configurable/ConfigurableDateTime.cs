@@ -2,8 +2,9 @@
 using System.Collections.Generic;
 using System.Collections.Immutable;
 using ToSic.Eav.Data;
-using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.Queries;
+using ToSic.Eav.Data.Build;
+using ToSic.Eav.DataSource;
+using ToSic.Eav.DataSource.VisualQuery;
 
 
 // Demo / Training Code to help you create our own DataSource
@@ -17,14 +18,14 @@ namespace ToSic.Tutorial.DataSources
     [VisualQuery(
         NiceName = "Tutorial DateTime Configurable",
         Icon = "event",
-        GlobalName = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
+        NameId = "81dd49a7-fa70-4e98-b73d-8299bb3231f0",
         Type = DataSourceType.Source,
         // Guid of the Content-Type which must be exported with this DataSource
         // It's located in .data/contenttypes
         // The class RegisterGlobalContentTypes ensures that 2sxc/EAV will find it
-        ExpectsDataOfType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
+        ConfigurationType = "677210a2-cf08-46e5-a6b2-86e56e27be99",
         HelpLink = "https://r.2sxc.org/DsCustom")]
-    public class ConfigurableDateTime : ExternalData
+    public class ConfigurableDateTime : CustomDataSource
     {
 
         #region Configuration-properties
@@ -36,13 +37,7 @@ namespace ToSic.Tutorial.DataSources
         /// because everything in the config-dictionary will be token-resolved
         /// </summary>
         [Configuration(Fallback = DateTodayPlaceholder)]
-        public string DesiredDate
-        {
-            // Get the value from configuration - will automatically use the name of this property
-            get => Configuration.GetThis();
-            // Set the value in the configuration - will automatically use the name of this property
-            set => Configuration.SetThis(value);
-        }
+        public string DesiredDate => Configuration.GetThis();   // Get the value from configuration - will automatically use the name of this property
 
         /// <summary>
         /// A number-demo config. Note that we do error-checking and store it with SetError
@@ -59,33 +54,23 @@ namespace ToSic.Tutorial.DataSources
                 if (hour >= 0 && hour <= 23) 
                     return hour;
 
-                // If not, set the error, so that the code can later pick up the error-stream
-                SetError("Hour value out of range", $"The hour was '{hour}' which is not valid");
-                return 0;
+                // Error: return a negative value, so when it's processed it's clear that it was an error
+                return -hour;
             }
-            // Set the value in the configuration - will use the name of this property and convert to string
-            set => Configuration.SetThis(value);
         }
 
-        #endregion
 
-        private readonly IDataBuilder _builder;
+        #endregion
 
         /// <summary>
         /// Constructs a new EntityIdFilter
         /// </summary>
-        public ConfigurableDateTime(Dependencies baseDependencies, IDataBuilder builder): base(baseDependencies, "My.Config")
+        public ConfigurableDateTime(MyServices services): base(services, "My.Config")
         {
-            // Make sure the services retrieved are connected for insights-logging
-            ConnectServices(
-                // Configure the builder to later create this type of data
-                _builder = builder.Configure(typeName: "CustomDay", titleField: "Title")
-            );
-
             // The out-list contains all out-streams.
             // For performance reasons we want to make sure that they are NOT created unless accessed
             // Because of this, we create a data-stream with a deferred call to GetEntities - like this:
-            Provide(GetEntities);
+            ProvideOut(GetEntities);
         }
 
 
@@ -112,12 +97,12 @@ namespace ToSic.Tutorial.DataSources
                 // Check if we're trying to inform about today
                 // if it fails, generate a result stream with error message inside
                 if (DesiredDate != DateTodayPlaceholder)
-                    return SetError("Demo Config not Today", "The Demo Configuration should be 'Today' or empty.");
+                    return Error.Create(title: "Demo Config not Today", message: "The Demo Configuration should be 'Today' or empty.");
 
                 // Get the hours - and if something is wrong, the ErrorStream will be pre-filled
                 var hours = Hours;
-                if (!ErrorStream.IsDefaultOrEmpty)
-                    return ErrorStream;
+                if (hours < 0)
+                    return Error.Create(title: "Hour value out of range", message: $"The hour was '{-hours}' which is not valid");
 
                 // For this demo we'll treat the current time as UTC
                 var todayDate = DateTime.SpecifyKind(DateTime.Today, DateTimeKind.Utc);
@@ -132,13 +117,14 @@ namespace ToSic.Tutorial.DataSources
                 };
 
                 // ...now convert to an entity with the data prepared before
-                var ent = _builder.Create(today);
+                var builder = DataFactory.New(options: new DataFactoryOptions(typeName: "CustomDay", titleField: "Title"));
+                var ent = builder.Create(today);
                 return new List<IEntity> { ent }.ToImmutableArray();
             }
             catch (Exception ex)
             {
                 // if something happens, let's return this information as a result
-                return SetError("Unexpected Error", "The Configurable DateTime DataSource ran into an exception.", ex);
+                return Error.Create(title: "Unexpected Error", message: "The Configurable DateTime DataSource ran into an exception.", exception: ex);
             }
             #endregion
 

@@ -1,9 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Collections.Immutable;
-using ToSic.Eav.Data;
-using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.Queries;
+using ToSic.Eav.Data.Build;
+using ToSic.Eav.DataSource;
+using ToSic.Eav.DataSource.VisualQuery;
 
 namespace ToSic.Tutorial.DataSources
 {
@@ -16,60 +14,37 @@ namespace ToSic.Tutorial.DataSources
         Icon = "today",
         // A very unique ID - make sure you get a fresh one for each data source
         // for example from https://guidgenerator.com/
-        GlobalName = "7aee541c-7188-429f-a4bb-2663a576b19e"
+        NameId = "7aee541c-7188-429f-a4bb-2663a576b19e"
     )]
-    public class TodayInfos: ExternalData
+    public class TodayInfos: CustomDataSource
     {
-        #region Constants
-
-        public const string DateFieldName = "Date";
-
-        #endregion
-
-        #region Constructor for Dependency Injection and Services
-
-        private readonly IDataBuilder _dateBuilder;
-
         /// <summary>
         /// Constructor to tell the system what out-streams we have.
         /// 
         /// Note that the base class needs certain Dependencies, which are all wrapped in the Dependencies type.
         /// This allows for a stable API even if future base classes require more dependencies.
         /// </summary>
-        /// <param name="baseDependencies">The dependencies required by the base class</param>
-        /// <param name="builder">The builder which we'll need to create our own data</param>
-        public TodayInfos(Dependencies baseDependencies, IDataBuilder builder): base(baseDependencies, "My.Basic")
+        /// <param name="services">The dependencies required by the base class</param>
+        public TodayInfos(MyServices services): base(services, "My.Basic")
         {
-            // Make sure the services retrieved are connected for insights-logging
-            ConnectServices(
-                // Configure the builder to later create this type of data
-                _dateBuilder = builder.Configure(typeName: "Basic", titleField: DateFieldName)
-            );
-
-            // "Default" out; when accessed, will deliver GetList
-            Provide(GetListWithToday);
+            // "Default" out; when accessed, will deliver GetListWithToday
+            ProvideOut(GetListWithToday, options: () => new DataFactoryOptions(titleField: "Date"));
         }
-
-        #endregion
 
         /// <summary>
         /// Get-List method, which will load/build the items once requested 
         /// Note that the setup is lazy-loading so this code will only execute when used
         /// </summary>
-        private IImmutableList<IEntity> GetListWithToday()
+        private object GetListWithToday()
         {
             // These are the values which the Entity will have
-            // It uses standard Name / Value pairs in a dictionary
-            var values = new Dictionary<string, object>
+            // It uses a very simple anonymous object
+            return new 
             {
-                { DateFieldName, DateTime.Now.ToShortDateString() },
-                { "Weekday", DateTime.Now.DayOfWeek },
-                { "DayOfWeek", (int)DateTime.Now.DayOfWeek }
+                Date = DateTime.Now.ToShortDateString(),
+                Weekday = DateTime.Now.DayOfWeek,
+                DayOfWeek = (int)DateTime.Now.DayOfWeek
             };
-
-            // Construct the IEntity and return as Immutable
-            var entity = _dateBuilder.Create(values);
-            return new[] { entity }.ToImmutableList();
         }
     }
 }

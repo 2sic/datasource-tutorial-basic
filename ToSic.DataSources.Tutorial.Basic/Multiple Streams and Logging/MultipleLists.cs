@@ -3,8 +3,9 @@ using System.Collections.Generic;
 using System.Collections.Immutable;
 using System.Linq;
 using ToSic.Eav.Data;
-using ToSic.Eav.DataSources;
-using ToSic.Eav.DataSources.Queries;
+using ToSic.Eav.Data.Build;
+using ToSic.Eav.DataSource;
+using ToSic.Eav.DataSource.VisualQuery;
 using ToSic.Lib.Logging;
 
 namespace ToSic.Tutorial.DataSources
@@ -13,9 +14,9 @@ namespace ToSic.Tutorial.DataSources
     [VisualQuery(
         NiceName = "Multiple Lists and Logging",
         Icon = "date_range",
-        GlobalName = "c90c6ce6-20a8-41ba-ad18-d37090306b31"   // random & unique Guid
+        NameId = "c90c6ce6-20a8-41ba-ad18-d37090306b31"   // random & unique Guid
     )]
-    public class MultipleLists : ExternalData
+    public class MultipleLists : CustomDataSource
     {
         #region Constants
 
@@ -26,23 +27,15 @@ namespace ToSic.Tutorial.DataSources
 
         #region Constructor for Dependency Injection and Services
 
-        private readonly IDataBuilder _builder;
-
         /// <summary>
         /// Constructor to tell the system what out-streams we have
         /// </summary>
-        public MultipleLists(Dependencies dependencies, IDataBuilder builder): base(dependencies, "My.BsList")
+        public MultipleLists(MyServices services) : base(services, "My.BsList")
         {
-            // Make sure the services retrieved are connected for insights-logging
-            ConnectServices(
-                // Configure the builder to later create this type of data
-                _builder = builder.Configure(typeName: "BasicList", titleField: DateFieldName)
-            );
-
             // default out, if accessed, will deliver GetList
-            Provide(Get27RandomDates);
+            ProvideOut(Get27RandomDates);
             // Another out
-            Provide("MeaningOfLife", Get42RandomDates);
+            ProvideOut(Get42RandomDates, name: "MeaningOfLife");
         }
 
         #endregion
@@ -55,9 +48,10 @@ namespace ToSic.Tutorial.DataSources
         /// <returns></returns>
         private IImmutableList<IEntity> Get27RandomDates()
         {
+            var dateBuilder = DataFactory.New(options: new DataFactoryOptions(typeName: "BasicList", titleField: DateFieldName));
             var result = Enumerable
                 .Range(1, 27)
-                .Select(i => _builder.Create(
+                .Select(i => dateBuilder.Create(
                     new Dictionary<string, object>
                     {
                         { IdField, i },
@@ -74,9 +68,10 @@ namespace ToSic.Tutorial.DataSources
             // Do some logging
             l.A("Just an info which is logged into insights");
 
+            var dateBuilder = DataFactory.New(options: new DataFactoryOptions(typeName: "BasicList", titleField: DateFieldName));
             var result = Enumerable
                 .Range(1, 42)
-                .Select(i => _builder.Create(
+                .Select(i => dateBuilder.Create(
                     new Dictionary<string, object>
                     {
                         { IdField, i },

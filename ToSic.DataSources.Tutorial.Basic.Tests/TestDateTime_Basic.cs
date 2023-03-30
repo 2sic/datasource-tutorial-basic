@@ -32,10 +32,10 @@ namespace ToSic.Tutorial.DataSources.Tests
         {
             var dtmDs = CreateDataSource<TodayInfos>();
             var item = dtmDs.List.First();
-            var dateAsString = item.GetBestValue(TodayInfos.DateFieldName);
+            var dateAsString = item.Get<string>("Date");
             Assert.IsNotNull(dateAsString);
 
-            var dateAsDate = item.GetBestValue<DateTime>(TodayInfos.DateFieldName);
+            var dateAsDate = item.Get<DateTime>("Date");
             Assert.IsNotNull(dateAsDate);
         }
     }
