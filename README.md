@@ -1,4 +1,4 @@
-# EAV DataSources - Tutorial - Basic for 2sxc 11.13+
+# EAV DataSources - Tutorial - Basic for 2sxc 16.00+
 
 Demo / tutorial code to get started with your own custom data source.
 
@@ -10,7 +10,7 @@ https://docs.2sxc.org/net-code/data-sources/custom/tutorial-basic/index.html
 
 ## What's inside
 
-1. A Visual Studio 2019 solution for 2sxc/EAV 11.13+ 
+1. A Visual Studio 2022 solution for 2sxc/EAV 16.00+
 1. Three DataSources
 1. Test code to test the DataSources
 
@@ -29,10 +29,9 @@ This is a fairly advanced example, containing
 
 1. Configuration
   1. Configuration of a DataSource with Tokens and Settings
-  1. A Configuration Content-Type stored in the `.data/contenttypes` folder
+  1. A Configuration Content-Type stored in the `App_Data/contenttypes` folder
   1. A class `RegisterGlobalContentTypes` which registers that folder for global Content-Type
 1. Error Reporting
   1. A property which should always contain `Today` or an error will be streamed
   1. A number property which will stream an error if it's not a number or > 23
   1. General error catching
-
