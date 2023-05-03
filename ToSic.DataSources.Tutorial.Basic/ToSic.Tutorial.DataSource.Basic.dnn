@@ -1,6 +1,6 @@
 <dotnetnuke type="Package" version="5.0">
   <packages>
-    <package name="ToSic.DataSource.Tutorial.Basic" type="Library" version="11.13.00">
+    <package name="ToSic.DataSource.Tutorial.Basic" type="Library" version="16.00.00">
       <friendlyName>ToSic DataSource Tutorial Basic</friendlyName>
       <description>2sic.com DataSource Tutorial Basic DataSources</description>
       <iconFile>~/Images/icon_extensions_32px.png</iconFile>
@@ -14,7 +14,7 @@
       <releaseNotes src="ReleaseNotes.txt"></releaseNotes>
       <azureCompatible>true</azureCompatible>
       <dependencies>
-        <dependency type="CoreVersion">07.04.02</dependency>
+        <dependency type="CoreVersion">09.06.01</dependency>
       </dependencies>
       
       <components>
